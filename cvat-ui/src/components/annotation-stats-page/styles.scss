@@ -7,6 +7,14 @@
 .cvat-annotation-stats-page {
     height: 100%;
     overflow: auto;
+
+    // The chart grows with the number of labels, so the card must grow with it. The management page
+    // mixins fix the height on wide screens, which cut the card off below the first rows. This rule
+    // is nested one level deeper so it wins over the mixins' media query.
+    .cvat-annotation-stats-inner-wrapper,
+    .cvat-annotation-stats-inner {
+        height: auto;
+    }
 }
 
 .cvat-annotation-stats-inner {
@@ -15,6 +23,7 @@
     display: flex;
     flex-direction: column;
     gap: $grid-unit-size * 2;
+    padding-bottom: $grid-unit-size * 4;
 }
 
 .cvat-annotation-stats-summary {
@@ -24,7 +33,7 @@
 }
 
 .cvat-annotation-stats-chart {
-    // the chart height grows with the number of labels; the page scrolls instead of squeezing bars
+    // the page scrolls instead of squeezing bars
     flex-shrink: 0;
 }
 
